@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\ServiceProvider;
 
 return [
 
@@ -103,8 +104,12 @@ return [
         ...array_filter(
             explode(',', env('APP_PREVIOUS_KEYS', ''))
         ),
-        \App\Providers\RoutingServiceProvider::class,
     ],
+
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        \App\Providers\RoutingServiceProvider::class,
+    ])->toArray(),
+
 
     /*
     |--------------------------------------------------------------------------
